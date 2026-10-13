@@ -1,0 +1,4 @@
+_build export-ignore
+.cpanel.yml export-ignore
+.gitattributes export-ignore
+.deploy-remove.txt export-ignore

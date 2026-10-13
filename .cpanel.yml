@@ -2,4 +2,5 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/tibbimarketaz/public_html/
-    - /bin/rsync -a --delete --exclude '.git' --exclude '.cpanel.yml' --exclude '_build' --exclude '.well-known' --exclude 'cgi-bin' --exclude 'error_log' --exclude '.user.ini' ./ $DEPLOYPATH
+    - git archive HEAD | tar -x -C "$DEPLOYPATH"
+    - while IFS= read -r f; do [ -n "$f" ] && rm -f "$DEPLOYPATH$f"; done < .deploy-remove.txt
